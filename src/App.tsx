@@ -49,8 +49,7 @@ function App() {
     
   }, []);
   
-  function submit() {
-
+  async function submit() {
     console.log(firstName, lastName, email, password, confirmPassword, school);
 
     if (password !== confirmPassword) {
@@ -93,12 +92,19 @@ function App() {
             }
         ]
       }
+      setHasFirefallAccount(true);
 
-    const res = fastspring.builder.secure(securePayload, "");
-    console.log(res)
-
-    fastspring.builder.checkout();
-    setHasFirefallAccount(true);
+      try {
+        const account = await checkAccount(email);
+        console.log("Account data:", account);
+        if (account.accounts[0].subscriptions.length === 0) {
+          fastspring.builder.secure(securePayload, "");
+          fastspring.builder.checkout();
+        }
+        
+      } catch (error) {
+        console.error("Error during checkout:", error);
+      }
   }
 
   function reset() {
@@ -146,11 +152,12 @@ function App() {
       console.log(data);
       setHasFastspringAccount(true);
       setAccountId(data.accounts[0].id);
+      return data;
     } catch (error) {
       console.error("Error fetching account:", error);
+      throw error;
     }
 
- 
   }
 
   return (
