@@ -6,7 +6,7 @@
   "homepage": "https://platevoltage.github.io/fastspring-test",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --tsconfig-ignore-errors",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
