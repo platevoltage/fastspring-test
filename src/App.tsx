@@ -1,31 +1,86 @@
-import { useEffect } from "react";
+import { useState, useEffect } from 'react';
+import './App.css';
 
-export default function PaymentManager() {
+function App() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [school, setSchool] = useState('');
+
+  //const FASTSPRING_USER = "QEHUGHH2QPICEXRTWDML9Q";
+  //const FASTSPRING_PW = "jVjcHL56Tr2sqqpMEwNQhA";
+
   useEffect(() => {
-    // Must be a primitive string
-    // This simulates the authenticated account URL from FastSpring API
-    const accountUrl = "https://firefallmath.test.onfastspring.com/account/7grjvDOMTF-tAgdEztztbg/JtqyopxVQ2s";
-
-    // Safe: guarantees a primitive string
-    fastspring.epml.init(String(accountUrl));
+    fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/7grjvDOMTF-tAgdEztztbg/JtqyopxVQ2s"));
   }, []);
 
-  function openSubscriptionManager() {
-    // Primitive strings only
-    const subscriptionId = "SUBSCRIPTION123";
-    const language = "en";
-
-    fastspring.epml.paymentManagementComponent(
-      String(subscriptionId),
-      String(language)
-    );
+  function subManagement() {
+    fastspring.epml.paymentManagementComponent(String("w9PdKaEIRTWJ5GM5Bsy5fg"), String("en"));
   }
 
   return (
-    <div>
-      <button onClick={openSubscriptionManager}>
-        Manage Subscription
-      </button>
-    </div>
+    <>
+      <form>
+        <label htmlFor="firstName">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <br />
+
+        <label htmlFor="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <br />
+
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br />
+
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+
+        <label htmlFor="confirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <br />
+
+        <label htmlFor="school">School:</label>
+        <input
+          type="text"
+          id="school"
+          value={school}
+          onChange={(e) => setSchool(e.target.value)}
+        />
+        <br />
+      </form>
+
+      <button onClick={subManagement}>Manage Subscription</button>
+    </>
   );
 }
+
+export default App;
