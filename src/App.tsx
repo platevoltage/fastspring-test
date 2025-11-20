@@ -13,7 +13,7 @@ function App() {
   //const FASTSPRING_PW = "jVjcHL56Tr2sqqpMEwNQhA";
 
   useEffect(() => {
-    fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/WYMz4fTsQJmmVzGTTpyjhw/PiXfZDWRSPY"));
+    fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/WYMz4fTsQJmmVzGTTpyjhw/hW9H1ao_ROY"));
   }, []);
 
   function subManagement() {
