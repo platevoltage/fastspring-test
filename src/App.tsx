@@ -48,7 +48,9 @@ function App() {
 
     
     fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/WYMz4fTsQJmmVzGTTpyjhw/TA4Y_9E6RKo"));
-    subManagement();
+    setTimeout(() => {
+      subManagement();
+    } , 5000);
   }, []);
   
   async function submit() {
