@@ -163,9 +163,9 @@ function App() {
     }
   }
 
-  function subManagement() {
-    fastspring.epml.paymentManagementComponent(String("EEsEAnsyTOCrEBlNMzX8jQ"), String("en"));
-  }
+  // function subManagement() {
+  //   fastspring.epml.paymentManagementComponent(String("EEsEAnsyTOCrEBlNMzX8jQ"), String("en"));
+  // }
 
   return (
     <>
