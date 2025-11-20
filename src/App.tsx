@@ -47,10 +47,10 @@ function App() {
     if (storedProduct) setProduct(storedProduct);
 
     
-    fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/WYMz4fTsQJmmVzGTTpyjhw/TA4Y_9E6RKo"));
-    setTimeout(() => {
-      subManagement();
-    } , 5000);
+    // fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/WYMz4fTsQJmmVzGTTpyjhw/TA4Y_9E6RKo"));
+    // setTimeout(() => {
+    //   subManagement();
+    // } , 5000);
   }, []);
   
   async function submit() {
