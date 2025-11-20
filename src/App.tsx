@@ -47,6 +47,7 @@ function App() {
     if (storedProduct) setProduct(storedProduct);
 
     
+    fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/WYMz4fTsQJmmVzGTTpyjhw/TA4Y_9E6RKo"));
   }, []);
   
   async function submit() {
@@ -158,6 +159,9 @@ function App() {
       throw error;
     }
 
+
+  function subManagement() {
+    fastspring.epml.paymentManagementComponent(String("EEsEAnsyTOCrEBlNMzX8jQ"), String("en"));
   }
 
   return (
