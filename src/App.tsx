@@ -48,6 +48,7 @@ function App() {
 
     
     fastspring.epml.init(String("https://firefallmath.test.onfastspring.com/account/WYMz4fTsQJmmVzGTTpyjhw/TA4Y_9E6RKo"));
+    subManagement();
   }, []);
   
   async function submit() {
@@ -120,22 +121,22 @@ function App() {
 
   async function openManagement() {
 
-  try {
-      const res = await fetch(`https://api.fastspring.com/accounts/${accountId}/authenticate`, {
-        method: 'GET',
-        headers: {
-          "Authorization": `Basic ${encodedAuth}`,
-          "Content-Type": "application/json"
-        }
-      })
-      
-      const data  = await res.json();
-      console.log(data);
-      window.location.href = data.accounts[0].url; // reloads page
+    try {
+        const res = await fetch(`https://api.fastspring.com/accounts/${accountId}/authenticate`, {
+          method: 'GET',
+          headers: {
+            "Authorization": `Basic ${encodedAuth}`,
+            "Content-Type": "application/json"
+          }
+        })
+        
+        const data  = await res.json();
+        console.log(data);
+        window.location.href = data.accounts[0].url; // reloads page
 
-    } catch (error) {
-      console.error("Error fetching account:", error);
-    }
+      } catch (error) {
+        console.error("Error fetching account:", error);
+      }
   }
 
   async function checkAccount(email: string) {
@@ -158,7 +159,7 @@ function App() {
       console.error("Error fetching account:", error);
       throw error;
     }
-
+  }
 
   function subManagement() {
     fastspring.epml.paymentManagementComponent(String("EEsEAnsyTOCrEBlNMzX8jQ"), String("en"));
