@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
  
  
 import { useState, useEffect } from 'react';
@@ -21,6 +22,28 @@ function App() {
   const encodedAuth = btoa(`${FASTSPRING_USER}:${FASTSPRING_PW}`);
   console.log(encodedAuth);
   // const secureKey = "2OAQLZNWSZE3OSLJS2X_FQ"
+
+  async function checkAccount(email: string) {
+    try {
+
+      const res = await fetch(`https://api.fastspring.com/accounts?email=${email}`, {
+        method: 'GET',
+        headers: {
+          "Authorization": `Basic ${encodedAuth}`,
+          "Content-Type": "application/json"
+        }
+      })
+      
+      const data  = await res.json();
+      console.log(data);
+      setHasFastspringAccount(true);
+      setAccountId(data.accounts[0].id);
+      return data;
+    } catch (error) {
+      console.error("Error fetching account:", error);
+      throw error;
+    }
+  }
 
 
   useEffect(() => {
@@ -141,27 +164,6 @@ function App() {
       }
   }
 
-  async function checkAccount(email: string) {
-    try {
-
-      const res = await fetch(`https://api.fastspring.com/accounts?email=${email}`, {
-        method: 'GET',
-        headers: {
-          "Authorization": `Basic ${encodedAuth}`,
-          "Content-Type": "application/json"
-        }
-      })
-      
-      const data  = await res.json();
-      console.log(data);
-      setHasFastspringAccount(true);
-      setAccountId(data.accounts[0].id);
-      return data;
-    } catch (error) {
-      console.error("Error fetching account:", error);
-      throw error;
-    }
-  }
 
   // function subManagement() {
   //   fastspring.epml.paymentManagementComponent(String("EEsEAnsyTOCrEBlNMzX8jQ"), String("en"));
