@@ -20,7 +20,7 @@ function App() {
   const FASTSPRING_PW = "jVjcHL56Tr2sqqpMEwNQhA";
   const encodedAuth = btoa(`${FASTSPRING_USER}:${FASTSPRING_PW}`);
   console.log(encodedAuth);
-  const secureKey = "2OAQLZNWSZE3OSLJS2X_FQ"
+  // const secureKey = "2OAQLZNWSZE3OSLJS2X_FQ"
 
 
   useEffect(() => {
